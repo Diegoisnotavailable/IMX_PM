@@ -1,0 +1,32 @@
+equipos=["AOI","Feeders","FBT","ICT","Oven"]
+
+# import PySimpleGUI
+import PySimpleGUI as sg
+  
+  
+# Choose a Theme for the Layout
+sg.theme('DarkTeal9')
+  
+layout = [[sg.Text('Select an equipment')],
+          [sg.Listbox(values = equipos,
+                      size =(20, 12),
+                      key ='-LIST-',
+                      enable_events = True)],
+          [sg.Button('Exit')]]
+  
+window = sg.Window('IMX Predictive maintenance ', layout)
+  
+# This is an Event Loop
+while True:  
+    event, values = window.read()
+      
+    if event in (None, 'Exit'):
+        break
+    file=sg.popup_get_file('Select a maintenance record for that equipment',  title="File selector")
+    print(file)
+          
+
+      
+# Close
+window.close()
+        
